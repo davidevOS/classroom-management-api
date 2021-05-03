@@ -1,0 +1,29 @@
+{
+  "name": "classroom-management-api",
+  "description": "API for classrooms' management",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "src/app.index",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidevOS/classroom-management-api.git"
+  },
+  "keywords": [],
+  "author": "David Galeano <davidgaleano217@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidevOS/classroom-management-api/issues"
+  },
+  "homepage": "https://github.com/davidevOS/classroom-management-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
