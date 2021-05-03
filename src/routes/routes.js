@@ -37,7 +37,7 @@ router.get('/teachers/:id', (req, res) => {
 
 // Get Students
 router.get('/students', (req, res) => {
-    mysqlConnection.query(`SELECT students.id, students.firstName, students.lastName, subjects.subjectName, groups.groupName, grades.q1, grades.q2, grades.q3, grades.q4, grades.avg FROM students JOIN groups ON students.groupId = groups.id JOIN subjects ON subjects.id = groups.id JOIN grades ON students.id = grades.id`, (err, rows, fields) => {
+    mysqlConnection.query(`SELECT students.id, students.firstName, students.lastName, subjects.subjectName, groups.groupName, grades.q1, grades.q2, grades.q3, grades.q4, grades.final FROM students JOIN groups ON students.groupId = groups.id JOIN subjects ON subjects.id = groups.id JOIN grades ON students.id = grades.id`, (err, rows, fields) => {
         if(!err) {
             let students = rows;
             var objs = {students};
@@ -51,8 +51,7 @@ router.get('/students', (req, res) => {
 // Get Student
 router.get('/students/:id', (req, res) => {
     const { id } = req.params
-    // console.log(id)
-    mysqlConnection.query(`SELECT students.id, students.firstName, students.lastName, subjects.subjectName, groups.groupName, grades.q1, grades.q2, grades.q3, grades.q4, grades.avg FROM students JOIN groups ON students.groupId = groups.id JOIN subjects ON subjects.id = groups.id JOIN grades ON students.id = grades.id WHERE students.id = ?`, [id], (err, rows, fields) => {
+    mysqlConnection.query(`SELECT students.id, students.firstName, students.lastName, subjects.subjectName, groups.groupName, grades.q1, grades.q2, grades.q3, grades.q4, grades.final FROM students JOIN groups ON students.groupId = groups.id JOIN subjects ON subjects.id = groups.id JOIN grades ON students.id = grades.id WHERE students.id = ?`, [id], (err, rows, fields) => {
         if(!err) {
             res.json(rows);
         } else {
@@ -79,7 +78,6 @@ router.get('/grades', (req, res) => {
 // Get Grades by Student ID
 router.get('/grades/:id', (req, res) => {
     const { id } = req.params
-    console.log(id)
     mysqlConnection.query(`SELECT * FROM grades WHERE grades.id = ?`, [id], (err, rows, fields) => {
         if(!err) {
             res.json(rows);
@@ -91,11 +89,11 @@ router.get('/grades/:id', (req, res) => {
 
 // Update Grades
 router.put('/grades/:id', (req, res) => {
-    const { q1, q2, q3, q4, avg } = req.body;
+    const { q1, q2, q3, q4, final } = req.body;
     const {id} = req.params;
-    const query = "UPDATE grades SET q1 = ?, q2 = ?, q3 = ?, q4 = ?, avg = ? WHERE id = ?";
+    const query = "UPDATE grades SET q1 = ?, q2 = ?, q3 = ?, q4 = ?, final = ? WHERE id = ?";
 
-    mysqlConnection.query(query, [q1, q2, q3, q4, avg, id], (err, rows, fields) => {
+    mysqlConnection.query(query, [q1, q2, q3, q4, final, id], (err, rows, fields) => {
         if(!err) {
             res.json({status: 'Grades Updated'});
         } else {
