@@ -1,18 +1,26 @@
 # Classroom Management API
 API for classrooms' management
 
-# RESTful Endpoints
-* List of teachers
-    * GET /teachers
-* Teacher info by ID
-    * GET /teachers/:id
-* List of Students    
-    * GET /students
-* Student Info by ID
-    * GET /students/:id
-* List of grades
-    * GET /grades
-* Grades by student ID    
-    * GET /grades/:id
+# RESTful Requests
+* Get List of teachers
+`GET /teachers`
+* Get Teacher info by ID
+`GET /teachers/:id`
+* Get List of Students    
+`GET /students`
+* Get Student Info by ID
+`GET /students/:id`
+* Get List of grades
+`GET /grades`
+* Get Grades by student ID    
+`GET /grades/:id`
 * Update grades by Student ID
-    * PUT /grades/:id
+`PUT /grades/:id`
+
+# API Deployed
+[API Deployed](https://class-room-management-api.herokuapp.com/)
+# Built With
+
+* Node
+* Express
+* MySQL
