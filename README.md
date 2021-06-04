@@ -58,7 +58,7 @@ Nodemon
 Ana Belisa Martínez
 
 ## Developed By
-Slack: [David Galeano [C7] ](https://github.com/davidevOS) |  Frontend
+Slack: [David Galeano [C7] ](https://github.com/davidevOS) |  Backend
 
 
 
